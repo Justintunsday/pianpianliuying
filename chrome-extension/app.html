@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>篇篇流萤 · 阅读答题助手</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <main>
+    <header><span class="eyebrow">FIREFLIES / DEEPSEEK · 1.0</span><h1>阅读答题助手</h1><p>从当前文章出发，为每一道题找到依据。</p></header>
+    <section class="settings">
+      <details open><summary>接口设置 · 请填写 API Key</summary>
+        <label>DeepSeek API Key<input id="apiKey" type="password" autocomplete="off"></label>
+        <label>模型名称<input id="model" value="deepseek-flash" autocomplete="off"></label>
+        <button id="saveSettings" class="secondary">保存设置</button>
+        <p class="muted">设置只保存在本机。仅将文章、题目和选项发送给 api.deepseek.com。</p>
+      </details>
+    </section>
+    <section class="work">
+      <div class="toolbar"><button id="extract">读取题目</button><button id="solve" disabled>DeepSeek 分析答案</button><button id="cancel" class="secondary" hidden>取消分析</button></div>
+      <p id="status" role="status" aria-live="polite">正在读取题目…</p>
+      <h2 id="title"></h2><p id="count" class="muted"></p>
+      <div id="answers"></div>
+      <label id="reviewLabel" class="review" hidden><input id="review" type="checkbox"> 我已核对低置信度答案及其解释</label>
+      <div class="toolbar"><button id="fill" disabled>一键勾选答案</button><button id="back" class="secondary">返回题目页</button><button id="download" class="secondary" disabled>导出文章与答案</button></div>
+      <p class="muted">在普通 Chrome 中手动完成网站验证和登录，再打开助手。勾选后请在网站确认并提交。分析期间可切换标签页，请保留本助手页面。</p>
+    </section>
+  </main>
+  <script src="config.js"></script><script src="app.js"></script>
+</body>
+</html>

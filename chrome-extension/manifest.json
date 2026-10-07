@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "篇篇流萤 · 阅读答题助手",
+  "version": "1.0",
+  "description": "在已登录的题目页提取文章，调用 DeepSeek 分析并勾选答案。",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "host_permissions": ["https://fireflies.chiculture.org.hk/*", "https://api.deepseek.com/*"],
+  "action": {"default_title": "打开篇篇流萤答题助手"},
+  "background": {"service_worker": "background.js"},
+  "content_security_policy": {"extension_pages": "script-src 'self'; object-src 'self'"}
+}

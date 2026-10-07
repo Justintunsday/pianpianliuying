@@ -1,0 +1,6 @@
+.browser-profile/
+outputs/
+.venv/
+__pycache__/
+.env
+*.zip
