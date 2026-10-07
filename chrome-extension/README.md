@@ -1,14 +1,14 @@
-# Chrome 插件 1.0
+# Chrome Extension 1.0
 
-1. 在 Chrome 打开 `chrome://extensions`，开启开发者模式。
-2. 点击“加载已解压的扩展程序”，选择此文件夹。
-3. 在网站手动完成验证与登录，打开单篇题目页。
-4. 点击插件图标，填写自己的 DeepSeek API Key 并保存设置。
-5. 分析题目、核对答案，再点击“一键勾选答案”。
-6. 返回网站核对并手动提交。
+1. Open `chrome://extensions` in Chrome and enable **Developer mode**.
+2. Click **Load unpacked** and select this folder.
+3. Complete the website's security verification and sign in manually, then open an individual assignment.
+4. Click the extension icon. Enter your own DeepSeek API key and save the settings.
+5. Click **DeepSeek 分析答案** (Analyze answers), review the results, then click **一键勾选答案** (Select all answers).
+6. Return to the website, check the selections, and submit manually.
 
-接口固定为官方 `https://api.deepseek.com`，默认模型 `deepseek-flash`。项目未内置密钥，填写的密钥保存在本机扩展存储。生成的答案也缓存在本机，目标题目和选项未改变时可自动恢复。
+The extension uses the official `https://api.deepseek.com` endpoint and defaults to `deepseek-flash`. No API key is bundled. Your key is stored locally in Chrome extension storage. Generated answers are also cached locally and can be restored for the same assignment tab if the article, questions, and options have not changed.
 
-分析期间可切换标签页，请保留助手和原题目页。插件不处理或绕过网站安全验证，不自动提交答案。
+You may switch tabs during analysis, but keep both the assistant and the original assignment tab open. The extension does not complete or bypass website security verification and does not submit answers automatically.
 
-修改文件后，在扩展管理页刷新插件，再刷新助手页面。顶部版本应为 1.0。
+After editing the extension files, reload the extension on the extensions page, then refresh the assistant page. The version displayed at the top should be 1.0.
