@@ -31,6 +31,7 @@ const context = {
   chrome: {storage: {local: {get: () => new Promise(() => {})}}},
   document: {
     getElementById(id) {
+      if (id === 'fireflies-wblock-host') return null;
       if (id.startsWith('rb_')) return inputs.find((input) => input.id === id);
       if (!controls.has(id)) controls.set(id, {addEventListener() {}});
       return controls.get(id);
@@ -39,8 +40,13 @@ const context = {
     querySelectorAll: (selector) => selector === 'form .card' ? cards : questions.flatMap((_, n) => labels(n))
   }
 };
+context.window = {};
+context.window.top = context.window;
+context.window.self = context.window;
 vm.createContext(context);
-vm.runInContext(fs.readFileSync(path.join(__dirname, 'app.js'), 'utf8'), context);
+const isWblock = process.argv.includes('--wblock');
+const code = fs.readFileSync(isWblock ? path.join(__dirname, '../wblock/fireflies.user.js') : path.join(__dirname, 'app.js'), 'utf8');
+vm.runInContext(isWblock ? code.replace('  bootstrap();', '  Object.assign(globalThis, {fillPage});') : code, context);
 (async () => {
   const source = {url, article: 'Article', questions};
   const choices = questions.map((q, n) => ({question_number: n + 1, option_id: q.options[0].id}));

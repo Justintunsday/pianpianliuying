@@ -1,6 +1,14 @@
 # Fireflies Reading Assistant 1.0
 
-Read articles and multiple-choice questions from a signed-in Fireflies assignment page and use DeepSeek to analyze the answers. This project includes a Chrome Manifest V3 extension and a Python script. No API key is included.
+Read articles and multiple-choice questions from a signed-in Fireflies assignment page and use DeepSeek to analyze the answers. This project includes a Chrome Manifest V3 extension, a wBlock userscript for iOS Safari, and a Python script. No API key is included.
+
+## iOS Safari (wBlock)
+
+Install the userscript through wBlock using this URL:
+
+https://raw.githubusercontent.com/Justintunsday/pianpianliuying/main/wblock/fireflies.user.js
+
+The script adds a collapsible assistant to the assignment page. Enter your own API key, analyze the questions, review the answers and select options, then submit manually. See [wBlock installation instructions](wblock/README.md) for setup and limitations. Actual iOS behavior has not yet been verified on a device.
 
 ## Chrome Extension
 
@@ -45,6 +53,9 @@ Local HTML mode outputs suggested answers; select and submit them manually on th
 node --check chrome-extension/app.js
 node chrome-extension/check.cjs
 node chrome-extension/check-fill.cjs
+node --check wblock/fireflies.user.js
+node wblock/check.cjs
+node chrome-extension/check-fill.cjs --wblock
 py -m py_compile fireflies_answer.py
 ```
 
