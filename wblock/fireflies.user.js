@@ -164,6 +164,7 @@ async function fillPage(source, choices) {
     el("fill").disabled = busy || !answers || (answers.some((a) => a.confidence < .8) && !el("review").checked);
     el("cancel").hidden = !busy || !cancelRequest;
     el("reviewLabel").hidden = !answers?.some((a) => a.confidence < .8);
+    el("analysis").hidden = !answers;
     el("save").disabled = busy;
     el("forget").disabled = busy;
   }
@@ -290,6 +291,8 @@ async function fillPage(source, choices) {
         header,.actions {display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
         header strong {flex:1;font-size:18px;}
         .actions {margin:12px 0;}
+        summary {cursor:pointer;min-height:44px;padding:10px 0;font-weight:600;}
+        #analysis {border-top:1px solid #dfe6d8;margin-top:12px;}
         #status {padding:10px;background:#eaf2e5;border-radius:8px;white-space:pre-wrap;font-size:14px;}
         #status.error {background:#fff0ea;color:#903e27;}
         #title {font-size:17px;}
@@ -313,11 +316,10 @@ async function fillPage(source, choices) {
           <div class="actions"><button id="save">保存设置</button><button id="forget" class="secondary">清除密钥</button></div>
           <p class="muted">设置存入 wBlock 脚本存储。仅向官方 DeepSeek 发送文章、题目与选项。</p>
         </details>
-        <div class="actions"><button id="read" class="secondary">读取题目</button><button id="solve" disabled>分析答案</button><button id="cancel" class="secondary" hidden>取消</button></div>
+        <div class="actions"><button id="read" class="secondary">读取题目</button><button id="solve" disabled>分析答案</button><button id="fill" disabled>一键勾选</button><button id="cancel" class="secondary" hidden>取消</button></div>
         <p id="status" role="status" aria-live="polite">请打开题目页。</p><h2 id="title"></h2>
-        <div id="answers"></div>
         <label id="reviewLabel" hidden><input id="review" type="checkbox"> 我已核对低置信度答案</label>
-        <div class="actions"><button id="fill" disabled>一键勾选</button></div>
+        <details id="analysis" hidden><summary>答案分析 · 点击展开 / 收起</summary><div id="answers"></div></details>
         <p class="muted">核对后在网站手动提交。模型置信度不保证正确率；网站验证和登录由你完成。</p>
       </section>`;
     el("launcher").addEventListener("click", async () => {

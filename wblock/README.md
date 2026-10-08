@@ -13,7 +13,7 @@ A userscript edition of Fireflies Reading Assistant for Safari on iPhone and iPa
 4. Open Safari, complete the website's verification and sign in manually, then open an assignment page. Reload it after installing the script.
 5. Tap the floating **答题助手** (Answer assistant) button. Enter your own DeepSeek API key in **DeepSeek 设置** (Settings) and save it.
 6. Tap **读取题目** (Read questions), then **分析答案** (Analyze answers). Keep Safari in the foreground while the request runs.
-7. Review the answers and explanations, then tap **一键勾选** (Select all answers). Collapse the panel, switch to the website's answer tab, and submit manually.
+7. Expand **答案分析** (Answer analysis) to review the answers and explanations, then tap **一键勾选** (Select all answers) in the top action row. Collapse the panel, switch to the website's answer tab, and submit manually.
 
 If URL installation is unavailable, import `fireflies.user.js` as a userscript file or paste its complete contents into wBlock's userscript editor. Do not add it as a filter list.
 
